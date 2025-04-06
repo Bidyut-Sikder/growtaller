@@ -19,17 +19,17 @@ const data = [
     suitable: "For All Age",
     category: "Male & Female",
     route: "height",
-    image: require("../assets/bmi/Dana-scruggs-fitness.gif"),
+    image: require("../assets/height/Triangle Pose.webp"),
   },
   {
     id: "2",
     title: "Full Body Exercise",
-    timeLine: "Minimum in 80 Days",
+    timeLine: "Minimum in 60 Days",
     dailyWorkout: "Every Day 20 MIN",
     suitable: "For All Age",
     category: "BMI",
     route: "bmi",
-    image: require("../assets/bmi/giphy.gif"),
+    image: require("../assets/bmi/Jumping Jacks.gif"),
   },
 ];
 
