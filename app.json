@@ -15,7 +15,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.bidyut_sikder.growtaller"
     },
     "web": {
       "bundler": "metro",
@@ -33,10 +34,21 @@
           "backgroundColor": "#ffffff"
         }
       ],
-
+      "react-native-google-mobile-ads"
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "5ff7a45a-4d18-41f1-b2d7-d62084853998"
+      }
     }
+  },
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-6496060089456706~3595671636"
   }
 }
