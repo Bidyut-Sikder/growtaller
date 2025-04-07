@@ -10,38 +10,42 @@ import { Image } from "expo-image";
 import { bmi_exercises, height_exercises } from "@/constants/data";
 import { Link, useRouter } from "expo-router";
 import { FontAwesome5 } from "@expo/vector-icons";
+import BannerAds from "@/components/BannerAds";
 //codemodule
 const ExerciseList = () => {
   const router = useRouter();
 
   const renderItem = ({ item }: any) => {
     return (
-      <Link
-        href={{
-          pathname: "/[id]",
-          params: {
-            id: item.id,
-            tag: "height",
-          },
-        }}
-      >
-        <View style={styles.itemContainer}>
-          <View style={styles.textContainer}>
-            <Text style={styles.exerciseName}>{item.name}</Text>
-            <Text style={styles.exerciseInfo}>{item.repeat}</Text>
-            <Text style={styles.exerciseInfo}>{item.duration}</Text>
+  
+        <Link
+          href={{
+            pathname: "/[id]",
+            params: {
+              id: item.id,
+              tag: "height",
+            },
+          }}
+        >
+          <View style={styles.itemContainer}>
+            <View style={styles.textContainer}>
+              <Text style={styles.exerciseName}>{item.name}</Text>
+              <Text style={styles.exerciseInfo}>{item.repeat}</Text>
+              <Text style={styles.exerciseInfo}>{item.duration}</Text>
+            </View>
+            <View style={styles.imageContainer}>
+              <Image source={item.image} style={styles.image} />
+              <FontAwesome5
+                style={styles.forwordIcon}
+                name="arrow-right"
+                size={26}
+                color="black"
+              />
+            </View>
           </View>
-          <View style={styles.imageContainer}>
-            <Image source={item.image} style={styles.image} />
-            <FontAwesome5
-              style={styles.forwordIcon}
-              name="arrow-right"
-              size={26}
-              color="black"
-            />
-          </View>
-        </View>
-      </Link>
+        </Link>
+    
+  
     );
   };
 
@@ -70,6 +74,7 @@ const ExerciseList = () => {
       >
         <Text style={styles.buttonText}>Start Workout</Text>
       </TouchableOpacity>
+      <BannerAds />
     </View>
   );
 };
@@ -115,7 +120,8 @@ const styles = StyleSheet.create({
   },
   floatingButton: {
     position: "absolute",
-    bottom: 20,
+    // bottom: 20,
+    bottom: 60,
 
     alignSelf: "center",
     backgroundColor: "#E83F25",

@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: "center",
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "center", 
   },
 });
 

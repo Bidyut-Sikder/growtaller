@@ -9,12 +9,31 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Image } from "expo-image";
+import { AdEventType } from "react-native-google-mobile-ads";
+import { interstitial } from "@/components/InterstitialAds";
+import BannerAds from "@/components/BannerAds";
 
 const Id = () => {
   const { id, tag } = useLocalSearchParams();
   const [currentId, setCurrentId] = useState(id);
-  const [data, setData] = useState<{ id: string; name: string; image: string } | null>(null);
-  const [nextExercise, setNextExercise] = useState<{ id: string; name: string; repeat: string; duration: string; image: any } | null>(null);
+  const [data, setData] = useState<{
+    id: string;
+    name: string;
+    image: string;
+  } | null>(null);
+  const [nextExercise, setNextExercise] = useState<{
+    id: string;
+    name: string;
+    repeat: string;
+    duration: string;
+    image: any;
+  } | null>({
+    id: "",
+    name: "",
+    repeat: "",
+    duration: "",
+    image: "",
+  });
   const [time, setTime] = useState(60);
   const [isRunning, setIsRunning] = useState(false);
 
@@ -25,7 +44,9 @@ const Id = () => {
 
     if (clickedData) {
       setData(clickedData);
-      const currentIndex = exerciseList.findIndex((item) => item.id === currentId);
+      const currentIndex = exerciseList.findIndex(
+        (item) => item.id === currentId
+      );
       setNextExercise(exerciseList[currentIndex + 1] || null);
     } else {
       setData(null);
@@ -58,28 +79,67 @@ const Id = () => {
     setIsRunning(false);
   };
 
+  // Show interstitial ad when no more exercises
+  const [loaded, setLoaded] = useState(false);
+
+  console.log(nextExercise);
+  useEffect(() => {
+    const unsubscribeLoaded = interstitial.addAdEventListener(
+      AdEventType.LOADED,
+      () => {
+        setLoaded(true);
+      }
+    );
+
+    if (nextExercise === null) {
+      interstitial.show();
+    }
+
+    return () => {
+      unsubscribeLoaded();
+      interstitial.load()
+    };
+  }, [nextExercise]);
+  // No advert ready to show yet
+  // if (!loaded) {
+  //   return null;
+  // }
   return (
     <>
       {data && <Stack.Screen options={{ title: data.name }} />}
       <ScrollView contentContainerStyle={styles.container}>
         {/* Timer */}
         <View style={styles.clock}>
-          <Text style={styles.clockTimer}>{time === 60 ? "1.00" : `00.${time}`}</Text>
+          <Text style={styles.clockTimer}>
+            {time === 60 ? "1.00" : `00.${time}`}
+          </Text>
         </View>
 
         {/* Exercise Image */}
-        {data ? <Image source={data.image} style={styles.image} /> : <Text style={styles.errorText}>Exercise not found</Text>}
+        {data ? (
+          <Image source={data.image} style={styles.image} />
+        ) : (
+          <Text style={styles.errorText}>Exercise not found</Text>
+        )}
 
         {/* Button Container */}
         <View style={styles.buttonContainer}>
           {/* Start/Pause Button */}
-          <TouchableOpacity style={styles.startButton} onPress={() => setIsRunning(!isRunning)}>
-            <Text style={styles.buttonText}>{isRunning ? "Pause" : "Start"}</Text>
+          <TouchableOpacity
+            style={styles.startButton}
+            onPress={() => setIsRunning(!isRunning)}
+          >
+            <Text style={styles.buttonText}>
+              {isRunning ? "Pause" : "Start"}
+            </Text>
           </TouchableOpacity>
 
           {/* Reset Button */}
           <TouchableOpacity
-            style={[styles.resetButton, { opacity: isRunning || time === 60 ? 0 : 1 }]}
+            style={[
+              styles.resetButton,
+              { opacity: isRunning || time === 60 ? 0 : 1 },
+            ]}
             onPress={resetTimer}
             disabled={isRunning || time === 60}
           >
@@ -88,7 +148,10 @@ const Id = () => {
 
           {/* Next Exercise Button */}
           {nextExercise ? (
-            <TouchableOpacity style={styles.nextButton} onPress={() => nextHandler(nextExercise.id)}>
+            <TouchableOpacity
+              style={styles.nextButton}
+              onPress={() => nextHandler(nextExercise.id)}
+            >
               <Text style={styles.buttonText}>Next</Text>
             </TouchableOpacity>
           ) : (
@@ -96,6 +159,7 @@ const Id = () => {
           )}
         </View>
       </ScrollView>
+      <BannerAds />
     </>
   );
 };
@@ -191,7 +255,6 @@ const styles = StyleSheet.create({
 });
 
 export default Id;
-
 
 ////////////////////
 // import { bmi_exercises } from "@/constants/data";

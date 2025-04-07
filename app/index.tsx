@@ -1,11 +1,22 @@
+import BannerAds from "@/components/BannerAds";
 import Home from "@/components/Home";
+
 import React from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
+
+const FlatListBasics = () => {
+  return (
+    <View style={styles.container}>
+      <Home />
+      <BannerAds />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 22,
+    paddingTop: 3,
   },
   item: {
     padding: 10,
@@ -13,13 +24,4 @@ const styles = StyleSheet.create({
     height: 44,
   },
 });
-
-const FlatListBasics = () => {
-  return (
-    <View style={styles.container}>
-      <Home />
-    </View>
-  );
-};
-
 export default FlatListBasics;
