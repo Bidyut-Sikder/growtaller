@@ -3,10 +3,11 @@ import { Stack, useRouter } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
-import "react-native-reanimated";
+
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons"; // Ensure you have @expo/vector-icons installed
 import { TouchableOpacity, View } from "react-native";
 import { interstitial } from "@/components/InterstitialAds";
+// import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -31,6 +32,8 @@ export default function RootLayout() {
 
   return (
     <>
+      <StatusBar style="auto" />
+
       <Stack
         screenOptions={{
           headerStyle: {
@@ -105,7 +108,21 @@ export default function RootLayout() {
         />
         <Stack.Screen name="+not-found" />
       </Stack>
-      <StatusBar style="auto" />
     </>
   );
 }
+
+
+// import { Stack } from 'expo-router';
+// import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+
+// export default function Layout() {
+//   return (
+//     <SafeAreaProvider>
+//       <SafeAreaView style={{ flex: 1 }}>
+//         <Stack />
+//       </SafeAreaView>
+//     </SafeAreaProvider>
+//   );
+// }
+

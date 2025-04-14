@@ -50,7 +50,7 @@ Join our community of developers creating universal apps.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
 
 
-## Project Bundling 
+# Project Bundling 
 
 # EAS Build Guide
 
@@ -98,12 +98,37 @@ npx eas build --platform android --profile production
 
 1. Run to manage credentials:
 ```bash
-npx eas credentials
+npx eas credentials // download the credentials
 ```
 
 2. Download and back up your credentials
 
 > ⚠️ **Important:**  
 > If you lose your keystore credentials, you **won’t be able to update** your app on the Play Store in the future.
+> Make sure to store them securely.
+
+
+# Necessary Packages To Make A Minumum Development Build
+
+```
+    "@expo/vector-icons": "^14.0.4",
+    "eas-cli": "^16.3.1",
+    "expo": "~52.0.42",
+    "expo-dev-client": "~5.0.19",// uninstall before going to production
+    "expo-font": "~13.0.4",
+    "expo-image": "~2.0.7",
+    "expo-router": "~4.0.19",
+    "expo-splash-screen": "~0.29.22",
+    "expo-status-bar": "~2.0.1",
+    "react": "18.3.1",
+    "react-native": "0.76.8",
+    "react-native-gesture-handler": "~2.20.2",
+    "react-native-google-mobile-ads": "14.8.0",
+    "react-native-safe-area-context": "4.12.0",
+    "react-native-screens": "~4.4.0"
+
+```
+
+
 
 
