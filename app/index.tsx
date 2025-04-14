@@ -1,14 +1,16 @@
 import BannerAds from "@/components/BannerAds";
 import Home from "@/components/Home";
 
+
 import React from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import {  StyleSheet, Text, View } from "react-native";
 
 const FlatListBasics = () => {
   return (
     <View style={styles.container}>
       <Home />
       <BannerAds />
+
     </View>
   );
 };

@@ -6,11 +6,12 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
+  Pressable
 } from "react-native";
 import { Image } from "expo-image";
 import { bmi_exercises } from "@/constants/data";
 import { Link, useRouter } from "expo-router";
-import { FontAwesome5 } from "@expo/vector-icons";
+import  FontAwesome5  from "@expo/vector-icons/FontAwesome5";
 import { interstitial } from "@/components/InterstitialAds";
 
 import BannerAds from "@/components/BannerAds";
@@ -21,15 +22,16 @@ const ExerciseList = () => {
   const renderItem = ({ item }: any) => {
     return (
       <Link
+        asChild
         href={{
           pathname: "/[id]",
           params: {
             id: item.id,
-            tag: "bmi",
+            tag: "bmi", 
           },
         }}
       >
-        <View style={styles.itemContainer}>
+        <Pressable style={styles.itemContainer}>
           <View style={styles.textContainer}>
             <Text style={styles.exerciseName}>{item.name}</Text>
             <Text style={styles.exerciseInfo}>{item.repeat}</Text>
@@ -44,13 +46,13 @@ const ExerciseList = () => {
               color="black"
             />
           </View>
-        </View>
+        </Pressable>
       </Link>
     );
   };
 
   const handle = () => {
-    console.log('loaded ads')
+    // console.log('loaded ads')
     interstitial.load();
   };
   return (

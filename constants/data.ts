@@ -227,3 +227,42 @@ export const height_exercises = [
     image: require("../assets/height/Vertical Leg Crunches.webp"),
   },
 ];
+
+
+export const settingsData = [
+  {
+    title: "Remove Ads",
+    description: "Remove ads from the app",
+    link: "premium", // Internal screen navigation
+  },
+  {
+    title: "Customer Support",
+    description: "Tell us what changes you'd like to see, or bugs you've found",
+    link: "customer-support", // Internal screen navigation
+  },
+  {
+    title: "Rate Us",
+    description: "Do you like the app? Let us know by rating us 5 stars",
+    link: "rating", // External link for rating
+  },
+  {
+    title: "Share",
+    description: "Do you want to share this app with your friends?",
+    link: "share", // This will trigger the sharing functionality
+  },
+  {
+    title: "Privacy Policy",
+    description: "Read our privacy policy to know how we use your data",
+    link: "https://www.yourwebsite.com/privacy-policy", // External link
+  },
+  {
+    title: "Terms of Service",
+    description: "Read the terms and conditions of using this app",
+    link: "https://www.yourwebsite.com/terms", // External link
+  },
+  {
+    title: "GrowTaller App",
+    description: "Version 1.0.0",
+    link: "settings", // Internal navigation, e.g., showing version info
+  },
+];

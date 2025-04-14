@@ -48,3 +48,62 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+
+## Project Bundling 
+
+# EAS Build Guide
+
+## 💻 Local Build
+
+> Setup (run once):
+```bash
+eas build:configure
+```
+
+### 📦 Create `.apk` file (Local)
+```bash
+npx eas build --platform android --profile preview --local
+npx eas build --platform android --profile development --local
+```
+
+### 📦 Create `.aab` file (Local)
+```bash
+npx eas build --platform android --profile production --local
+```
+
+---
+
+## ☁️ Online Build
+
+> Setup (run once):
+```bash
+eas build:configure
+```
+
+### 📦 Create `.apk` file (Online)
+```bash
+npx eas build --platform android --profile preview
+npx eas build --platform android --profile development
+```
+
+### 📦 Create `.aab` file (Online)
+```bash
+npx eas build --platform android --profile production
+```
+
+---
+
+## 🔐 Before Production Build: Set up Keystore
+
+1. Run to manage credentials:
+```bash
+npx eas credentials
+```
+
+2. Download and back up your credentials
+
+> ⚠️ **Important:**  
+> If you lose your keystore credentials, you **won’t be able to update** your app on the Play Store in the future.
+
+

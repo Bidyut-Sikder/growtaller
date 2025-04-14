@@ -82,7 +82,7 @@ const Id = () => {
   // Show interstitial ad when no more exercises
   const [loaded, setLoaded] = useState(false);
 
-  console.log(nextExercise);
+  // console.log(nextExercise);
   useEffect(() => {
     const unsubscribeLoaded = interstitial.addAdEventListener(
       AdEventType.LOADED,

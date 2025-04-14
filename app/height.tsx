@@ -5,11 +5,12 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
+  Pressable,
 } from "react-native";
 import { Image } from "expo-image";
-import { bmi_exercises, height_exercises } from "@/constants/data";
+import {  height_exercises } from "@/constants/data";
 import { Link, useRouter } from "expo-router";
-import { FontAwesome5 } from "@expo/vector-icons";
+import  FontAwesome5  from "@expo/vector-icons/FontAwesome5";
 import BannerAds from "@/components/BannerAds";
 //codemodule
 const ExerciseList = () => {
@@ -17,35 +18,33 @@ const ExerciseList = () => {
 
   const renderItem = ({ item }: any) => {
     return (
-  
-        <Link
-          href={{
-            pathname: "/[id]",
-            params: {
-              id: item.id,
-              tag: "height",
-            },
-          }}
-        >
-          <View style={styles.itemContainer}>
-            <View style={styles.textContainer}>
-              <Text style={styles.exerciseName}>{item.name}</Text>
-              <Text style={styles.exerciseInfo}>{item.repeat}</Text>
-              <Text style={styles.exerciseInfo}>{item.duration}</Text>
-            </View>
-            <View style={styles.imageContainer}>
-              <Image source={item.image} style={styles.image} />
-              <FontAwesome5
-                style={styles.forwordIcon}
-                name="arrow-right"
-                size={26}
-                color="black"
-              />
-            </View>
+      <Link
+        asChild
+        href={{
+          pathname: "/[id]",
+          params: {
+            id: item.id,
+            tag: "height",
+          },
+        }}
+      >
+        <Pressable style={styles.itemContainer}>
+          <View style={styles.textContainer}>
+            <Text style={styles.exerciseName}>{item.name}</Text>
+            <Text style={styles.exerciseInfo}>{item.repeat}</Text>
+            <Text style={styles.exerciseInfo}>{item.duration}</Text>
           </View>
-        </Link>
-    
-  
+          <View style={styles.imageContainer}>
+            <Image source={item.image} style={styles.image} />
+            <FontAwesome5
+              style={styles.forwordIcon}
+              name="arrow-right"
+              size={26}
+              color="black"
+            />
+          </View>
+        </Pressable>
+      </Link>
     );
   };
 
